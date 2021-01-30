@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->string('name')->comment('Tiêu đề');
             $table->boolean('status')->default(true)->comment('Trạng thái');
+            $table->string('slug')->unique()->comment('Đường dẫn');
             $table->timestamps();
             $table->softDeletes();
         });

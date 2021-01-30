@@ -32,8 +32,10 @@ $factory->define(User::class, function (Faker $faker) {
 });
 $factory->define(Project::class, function (Faker $faker) {
     $name = $faker->sentence(5);
+    $slug = Str::slug($name, "-");
     return [
         'name' => $name,
+        "slug" => $slug,
     ];
 });
 
