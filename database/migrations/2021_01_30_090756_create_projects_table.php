@@ -15,7 +15,10 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name')->comment('Tiêu đề');
+            $table->boolean('status')->default(true)->comment('Trạng thái');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

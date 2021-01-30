@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateListsTable extends Migration
+class CreateListItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lists', function (Blueprint $table) {
+        Schema::create('list_items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->comment('Tiêu đề');
             $table->unsignedInteger('board_id')->unsigned();
@@ -21,10 +21,9 @@ class CreateListsTable extends Migration
             $table->text('description')->nullable()->comment('Mô tả');
             $table->string('image')->nullable()->comment('Ảnh');
             $table->date('date')->nullable()->comment('ngày hoàn thành task');
-            $table->boolean('label')->default(false)->comment('Trạng thái');
+            $table->string('label')->nullable()->comment('Trạng thái');
             $table->boolean('status')->default(true)->comment('Trạng thái');
             $table->integer('order')->default(1);
-            $table->boolean('type')->default(true)->comment('loại');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -37,6 +36,6 @@ class CreateListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lists');
+        Schema::dropIfExists('list_items');
     }
 }

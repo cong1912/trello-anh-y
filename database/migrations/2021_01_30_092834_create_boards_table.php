@@ -19,10 +19,8 @@ class CreateBoardsTable extends Migration
             $table->unsignedInteger('project_id')->unsigned();
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->text('description')->nullable()->comment('Mô tả');
-            $table->boolean('label')->default(false)->comment('Trạng thái');
             $table->boolean('status')->default(true)->comment('Trạng thái');
             $table->integer('order')->default(1);
-            $table->boolean('type')->default(true)->comment('loại');
             $table->timestamps();
             $table->softDeletes();
         });
