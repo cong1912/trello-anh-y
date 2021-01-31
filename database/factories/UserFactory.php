@@ -40,6 +40,7 @@ $factory->define(Project::class, function (Faker $faker) {
 });
 
 $factory->define(Board::class, function (Faker $faker) {
+    static $order = 1;
     $name = $faker->sentence(5);
     return [
         'name' => $name,
@@ -47,11 +48,12 @@ $factory->define(Board::class, function (Faker $faker) {
             return Project::all()->random();
         },
         'description' => $faker->text(10),
+        'order' => $order++
     ];
 });
 $factory->define(ListItem::class, function (Faker $faker) {
     $label = '[1,2,3,4]';
-    $order = 1;
+    static $order = 1;
     return [
         'name' => $faker->sentence(5),
         'board_id' => function () {
@@ -61,16 +63,15 @@ $factory->define(ListItem::class, function (Faker $faker) {
         'image' => $faker->imageUrl($width = 640, $height = 480),
         'date' => $faker->dateTimeBetween("-4 weeks"),
         'label' => $label,
-
         'order' => $order++
     ];
 });
 
 $factory->define(CheckItem::class, function (Faker $faker) {
-    $order = 1;
+    static $order = 1;
     return [
         'name' => $faker->sentence(5),
-        'list_id' => function () {
+        'list_item_id' => function () {
             return ListItem::all()->random();
         },
         'description' => $faker->sentence(10),

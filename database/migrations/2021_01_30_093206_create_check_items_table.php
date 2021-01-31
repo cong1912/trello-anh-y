@@ -16,8 +16,8 @@ class CreateCheckItemsTable extends Migration
         Schema::create('check_items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->comment('Tiêu đề');
-            $table->unsignedInteger('list_id')->unsigned();
-            $table->foreign('list_id')->references('id')->on('list_items')->onDelete('cascade');
+            $table->unsignedInteger('list_item_id')->unsigned();
+            $table->foreign('list_item_id')->references('id')->on('list_items')->onDelete('cascade');
             $table->text('description')->nullable()->comment('Mô tả');
             $table->date('date')->nullable()->comment('ngày hoàn thành task');
             $table->boolean('status')->default(true)->comment('Trạng thái');

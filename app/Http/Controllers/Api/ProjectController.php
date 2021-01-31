@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Board;
 use App\models\Project;
 use Illuminate\Http\Request;
 
@@ -37,7 +38,14 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        return $project = Project::find($id);
+     $project = Project::find($id);
+     $board=$project->board()->get();
+     $listItem= $project->listItem()->get();
+     $checkItem=$project->checkItem()->get();
+
+
+     return compact('project','board','listItem','checkItem');
+
 
 
     }
