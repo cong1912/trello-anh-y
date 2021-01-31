@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Board;
 use App\models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\Project as ProjectResource;
 
 class ProjectController extends Controller
 {
@@ -38,16 +42,8 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-     $project = Project::find($id);
-     $board=$project->board()->get();
-     $listItem= $project->listItem()->get();
-     $checkItem=$project->checkItem()->get();
-
-
-     return compact('project','board','listItem','checkItem');
-
-
-
+        $project=Board::with('listItem')->get()->where('project_id',$id);
+        return compact('project');
     }
 
     /**
