@@ -3,15 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Board;
-use App\models\Project;
+use App\Models\CheckItem;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Exception;
-use Illuminate\Support\Facades\DB;
-use App\Http\Resources\Project as ProjectResource;
 
-class ProjectController extends Controller
+class CheckItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +15,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $project=Project::all();
+        $project=CheckItem::all();
         return response()->json($project,200);
     }
 
@@ -36,7 +31,7 @@ class ProjectController extends Controller
             'name' => 'required',
             'slug' => 'required',
         ]);
-        $project = Project::create($request->all());
+        $project = CheckItem::create($request->all());
         return response()->json(['message'=> 'project created',
             'project' => $project],201);
     }
@@ -49,7 +44,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project=Project::find($id);
+        $project=CheckItem::find($id);
         return  response()->json($project,200);
     }
 
@@ -66,7 +61,7 @@ class ProjectController extends Controller
             'name' => 'required',
             'slug' => 'required',
         ]);
-        $project = Project::find($id)->update($request->all());
+        $project = CheckItem::find($id)->update($request->all());
         return response()->json(['message'=> 'project update',
             'project' => $project],200);
     }
@@ -79,7 +74,7 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::find($id)->delete();
+        $project = CheckItem::find($id)->delete();
         return response()->json(['message'=> 'project deleted','project' => $project],204);
     }
 }

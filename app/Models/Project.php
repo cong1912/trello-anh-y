@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
-
+    protected $fillable=[
+      'name',
+      'slug',
+    ];
 
     public function board()
     {

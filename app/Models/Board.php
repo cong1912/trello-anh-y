@@ -13,6 +13,10 @@ class Board extends Model
     }
     public function listItem()
     {
-        return $this->hasMany(ListItem::class,'board_id')->where('status', 1)->orderBy('order', 'desc');
+        return $this->hasMany(ListItem::class,'board_id')->where('status', 1)->orderBy('order', 'desc')->with($this->checkItem());
+    }
+    public function checkItem()
+    {
+        return $this->hasMany(CheckItem::class,'list_id')->where('status', 1)->orderBy('order', 'desc');
     }
 }
