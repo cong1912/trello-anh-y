@@ -49,8 +49,8 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project=Project::find($id);
-        return  response()->json($project,200);
+        $board=Project::find($id)->board();
+        return  response()->json($board,200);
     }
 
     /**

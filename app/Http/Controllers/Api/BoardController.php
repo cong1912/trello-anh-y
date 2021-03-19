@@ -45,7 +45,8 @@ class BoardController extends Controller
     public function show($id)
     {
         $project=Board::find($id);
-        return  response()->json($project,200);
+        $list_item=$project->listItem();
+        return  response()->json($list_item,200);
     }
 
     /**

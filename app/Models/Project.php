@@ -15,7 +15,7 @@ class Project extends Model
 
     public function board()
     {
-        return $this->hasMany(Board::class,'project_id')->where('status', 1)->orderBy('order', 'desc');
+        return $this->hasMany(Board::class,'project_id')->where('status', 1)->orderBy('order', 'desc')->get();
     }
     public function listItem(){
         return $this->hasManyThrough( 'App\Models\ListItem',
