@@ -29,7 +29,6 @@ class ListItemController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'slug' => 'required',
         ]);
         $project = ListItem::create($request->all());
         return response()->json(['message'=> 'project created',

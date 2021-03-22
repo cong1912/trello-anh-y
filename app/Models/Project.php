@@ -12,6 +12,7 @@ class Project extends Model
       'name',
       'slug',
     ];
+    protected $guarded = [];
 
     public function board()
     {

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ListItem extends Model
 {
+    protected $guarded = [];
     public function board()
     {
         return $this->belongsTo(Board::class);

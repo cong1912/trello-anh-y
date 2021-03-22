@@ -29,7 +29,6 @@ class BoardController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'slug' => 'required',
         ]);
         $project = Board::create($request->all());
         return response()->json(['message'=> 'project created',
@@ -60,7 +59,6 @@ class BoardController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'slug' => 'required',
         ]);
         $project = Board::find($id)->update($request->all());
         return response()->json(['message'=> 'project update',
