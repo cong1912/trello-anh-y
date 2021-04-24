@@ -6,6 +6,7 @@ use App\Models\Board;
 use App\Models\CheckItem;
 use App\Models\Project;
 use App\Models\ListItem;
+use App\Models\Todo;
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -77,5 +78,11 @@ $factory->define(CheckItem::class, function (Faker $faker) {
         'description' => $faker->sentence(10),
         'date' => $faker->dateTimeBetween("-4 weeks"),
         'order' => $order++
+    ];
+});
+$factory->define(Todo::class, function (Faker $faker) {
+    return [
+        'item' => $faker->sentence(3),
+        'done' => false,
     ];
 });

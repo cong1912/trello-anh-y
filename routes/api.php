@@ -41,3 +41,10 @@ Route::post('ListItem/', 'Api\ListItemController@store')->name('ListItems.store'
 Route::get('ListItem/{id}', 'Api\ListItemController@show')->name('ListItems.show');
 Route::put('ListItem/{id}', 'Api\ListItemController@update')->name('ListItems.update');
 Route::delete('ListItem/{id}', 'Api\ListItemController@destroy')->name('ListItems.delete');
+
+
+Route::get('todo/', 'Api\TodoController@index')->name('todos.index');
+Route::post('todo/', 'Api\TodoController@store')->name('todos.store');
+Route::get('todo/{id}', 'Api\TodoController@show')->name('todos.show');
+Route::put('todo/{id}', 'Api\TodoController@update')->name('todos.update');
+Route::delete('todo/{id}', 'Api\TodoController@destroy')->name('todos.delete');

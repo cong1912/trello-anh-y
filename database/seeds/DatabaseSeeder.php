@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             $this->command->info('ListItem 60 added.');
             factory("App\Models\CheckItem", 90)->create();
             $this->command->info('CheckItem 90 added.');
+            factory("App\Models\Todo", 10)->create();
+            $this->command->info('Todo 90 added.');
         }
     }
 }
